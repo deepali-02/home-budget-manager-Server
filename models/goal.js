@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      goal.belongsTo(models.user);
       // define association here
     }
   }
@@ -17,8 +18,9 @@ module.exports = (sequelize, DataTypes) => {
       target_amount: { type: DataTypes.FLOAT, allowNull: false },
       saved_amount: { type: DataTypes.FLOAT, allowNull: false },
       desire_date: { type: DataTypes.DATE, allowNull: false },
-      color: { type: DataTypes.STRING, allowNull: false },
-      logoUrl: { type: DataTypes.TEXT, allowNull: false },
+      color: { type: DataTypes.STRING },
+      logoUrl: { type: DataTypes.TEXT },
+      //userId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
       sequelize,

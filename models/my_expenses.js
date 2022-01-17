@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      my_expenses.belongsTo(models.user)
+      my_expenses.belongsTo(models.category)
       // define association here
     }
   }
@@ -15,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       amount: { type: DataTypes.FLOAT, allowNull: false },
       date: { type: DataTypes.DATE, allowNull: false },
+      // userId: { type: DataTypes.INTEGER, allowNull: false },
+      // categoriesId: {type: DataTypes.INTEGER,allowNull: false}
     },
     {
       sequelize,
