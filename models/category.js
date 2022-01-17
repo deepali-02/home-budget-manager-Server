@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: { type: DataTypes.STRING, allowNull: false },
       color: { type: DataTypes.STRING, allowNull: false },
-      logo: { type: DataTypes.STRING, allowNull: false },
+      logoUrl: { type: DataTypes.TEXT, allowNull: false },
     },
     {
       sequelize,

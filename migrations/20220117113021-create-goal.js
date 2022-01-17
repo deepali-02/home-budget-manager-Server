@@ -23,8 +23,8 @@ module.exports = {
       color: {
         type: Sequelize.STRING
       },
-      logo: {
-        type: Sequelize.STRING
+      logoUrl: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

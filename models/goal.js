@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       saved_amount: { type: DataTypes.FLOAT, allowNull: false },
       desire_date: { type: DataTypes.DATE, allowNull: false },
       color: { type: DataTypes.STRING, allowNull: false },
-      logo: { type: DataTypes.STRING, allowNull: false },
+      logoUrl: { type: DataTypes.TEXT, allowNull: false },
     },
     {
       sequelize,
