@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const { SALT_ROUNDS } = require("../config/constants");
 const { Router } = require("express");
 const { toJWT } = require("../auth/jwt");
 const authMiddleware = require("../auth/middleware");
@@ -35,7 +36,8 @@ router.post("/login", async (req, res, next) => {
 
 router.post("/signup", async (req, res) => {
   const { name, email, password, budget } = req.body;
-  if (!email || !password || !name || !budget) {
+  console.log("data from signup", req.body)
+  if (!name || !email || !password ||  !budget) {
     return res
       .status(400)
       .send("Please provide an email, password, name and budget");
@@ -60,7 +62,7 @@ router.post("/signup", async (req, res) => {
         .status(400)
         .send({ message: "There is an existing account with this email" });
     }
-
+    console.log(error)
     return res.status(400).send({ message: "Something went wrong, sorry" });
   }
 });

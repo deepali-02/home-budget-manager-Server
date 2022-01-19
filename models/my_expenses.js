@@ -16,9 +16,9 @@ module.exports = (sequelize, DataTypes) => {
   my_expenses.init(
     {
       amount: { type: DataTypes.FLOAT, allowNull: false },
-      date: { type: DataTypes.DATE, allowNull: false },
-      // userId: { type: DataTypes.INTEGER, allowNull: false },
-      // categoriesId: {type: DataTypes.INTEGER,allowNull: false}
+      date: { type: DataTypes.DATEONLY, allowNull: false },
+      userId: { type: DataTypes.INTEGER, allowNull: false },
+      categoryId: {type: DataTypes.INTEGER,allowNull: false}
     },
     {
       sequelize,

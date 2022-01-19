@@ -13,14 +13,14 @@ module.exports = {
         allowNull: false,
       },
       date: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
       },
       // userId: {
       //   type: Sequelize.INTEGER,
       //   allowNull: false,
       // },
-      // categoriesId: {
+      // categoryId: {
       //   type: Sequelize.INTEGER,
       //   allowNull: false,
       // },

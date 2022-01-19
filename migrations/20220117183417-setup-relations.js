@@ -22,7 +22,7 @@ module.exports = {
       onDelete: "SET NULL",
     });
 
-    await queryInterface.addColumn("my_expenses", "categoriesId", {
+    await queryInterface.addColumn("my_expenses", "categoryId", {
       type: Sequelize.INTEGER,
       references: {
         model: "categories",
@@ -36,6 +36,6 @@ module.exports = {
   async down(queryInterface, Sequelize) {
     await queryInterface.removeColumn("my_expenses", "userId");
     await queryInterface.removeColumn("goals", "userId");
-    await queryInterface.removeColumn("my_expenses", "categoriesId");
+    await queryInterface.removeColumn("my_expenses", "categoryId");
   },
 };
