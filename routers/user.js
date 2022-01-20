@@ -31,4 +31,30 @@ router.get("/my_expenses/:id", async (req, res) => {
   }
 });
 
+// router.post("/my_expenses/:id", async (req, res) => {
+//   const { amount, date } = req.body;
+//   if (!amount || !date) {
+//     return res.status(400).send("Please provide an amount and date");
+//   }
+//   try {
+//     const newExpense = await MyExpenses.create({
+//       amount,
+//       date,
+
+//     });
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// });
+
+router.get("/category", async (req, res) => {
+  try {
+    const category = await Category.findAll();
+    console.log("Category table info", category);
+    res.send(category);
+  } catch (e) {
+    console.log(e.message);
+  }
+});
+
 module.exports = router;
