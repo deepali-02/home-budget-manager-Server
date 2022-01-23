@@ -44,6 +44,7 @@ router.post("/my_expenses/:id", async (req, res) => {
       userId: req.params.id,
     });
     console.log("New expense", newExpense);
+    res.send(newExpense);
   } catch (error) {
     console.log(error.message);
   }
