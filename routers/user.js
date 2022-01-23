@@ -23,6 +23,7 @@ router.get("/my_expenses/:id", async (req, res) => {
     const expenses = await MyExpenses.findAll({
       include: [Category],
       where: { userId: id },
+      order: [["date", "DESC"]],
     });
     console.log("My expenses:", expenses);
     res.send(expenses);
