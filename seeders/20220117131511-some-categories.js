@@ -7,15 +7,15 @@ module.exports = {
       [
         {
           name: "Grocery",
-          color: "#0099ff",
+          color: "#54e8a5",
           logoUrl:
-            "https://e7.pngegg.com/pngimages/889/750/png-clipart-winnipeg-transit-logo-service-transport-shopping-cart-blue-text.png",
+            "https://cdn3.iconfinder.com/data/icons/unigrid-flat-food/90/006_142_grocery_food_gastronomy_bag-512.png",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: "Clothing",
-          color: "#ff0000",
+          color: "#e81a54",
           logoUrl:
             "https://png.pngtree.com/png-clipart/20190705/original/pngtree-vector-shirt-icon-png-image_4275708.jpg",
           createdAt: new Date(),
@@ -23,7 +23,7 @@ module.exports = {
         },
         {
           name: "Housing",
-          color: "#ff6600",
+          color: "#38cee8",
           logoUrl:
             "https://w7.pngwing.com/pngs/22/547/png-transparent-white-and-orange-icon-oregon-service-home-icon-miscellaneous-angle-building.png",
           createdAt: new Date(),
@@ -31,7 +31,7 @@ module.exports = {
         },
         {
           name: "Food & Drinks",
-          color: "#33cc33",
+          color: "#ebeb17",
           logoUrl:
             "https://p7.hiclipart.com/preview/175/335/608/fast-food-drink-foodservice-beverage-industry-food-and-neverage-png.jpg",
           createdAt: new Date(),
@@ -47,7 +47,7 @@ module.exports = {
         },
         {
           name: "Transportation",
-          color: "#000080",
+          color: "#eb17eb",
           logoUrl:
             "https://www.wavetransit.com/wp-content/uploads/2017/03/wave-connect-bus-icon-300x300.png",
           createdAt: new Date(),
@@ -55,7 +55,7 @@ module.exports = {
         },
         {
           name: "Other",
-          color: "#969696",
+          color: "#6e4447",
           logoUrl: "https://icon-library.com/images/flat_hamburger-512.png",
           createdAt: new Date(),
           updatedAt: new Date(),
