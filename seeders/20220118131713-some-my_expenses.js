@@ -29,6 +29,22 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          amount: 28,
+          date: "2022-02-15",
+          userId: 1,
+          categoryId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          amount: 18,
+          date: "2022-02-15",
+          userId: 1,
+          categoryId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
