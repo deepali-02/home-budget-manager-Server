@@ -118,4 +118,19 @@ router.get("/my_expenses/month/:month", async (req, res) => {
   }
 });
 
+router.delete("/my_expenses/delete/:id", async (req, res) => {
+  try {
+    const expenseId = req.params.id;
+    const expense = await MyExpenses.findByPk(expenseId);
+    console.log("Got expense", expense);
+    if (!expense) {
+      return res.status(404).send("Expense not found");
+    }
+    await expense.destroy();
+    res.send({ message: "Ok", expenseId });
+  } catch (e) {
+    console.log(e.message);
+  }
+});
+
 module.exports = router;
