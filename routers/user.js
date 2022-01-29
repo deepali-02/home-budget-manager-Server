@@ -94,6 +94,7 @@ router.get("/category", async (req, res) => {
   }
 });
 
+//search expense by month
 router.get("/my_expenses/month/:month", async (req, res) => {
   const month = req.params.month;
   const currentYear = new Date().getFullYear();
@@ -104,9 +105,13 @@ router.get("/my_expenses/month/:month", async (req, res) => {
   try {
     // const year = req.params.year;
     const monthlyExpenses = await MyExpenses.findAll({
+      include: [Category],
       where: { date: { [Op.between]: [startDateToSearch, endDateToSearch] } },
     });
     console.log("Monthly Expenses", monthlyExpenses);
+    // const monthlyExpense = await MyExpenses.findByPk(monthlyExpenses.id, {
+    //   include: [Category],
+    // });
     res.send(monthlyExpenses);
   } catch (e) {
     console.log(e.message);
