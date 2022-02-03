@@ -5,6 +5,7 @@ const { Op } = require("sequelize");
 const User = require("../models").user;
 const MyExpenses = require("../models").my_expenses;
 const Category = require("../models").category;
+const Goal = require("../models").goal;
 const { DATEONLY } = require("sequelize");
 
 const router = new Router();
@@ -128,6 +129,16 @@ router.delete("/my_expenses/delete/:id", async (req, res) => {
     }
     await expense.destroy();
     res.send({ message: "Ok", expenseId });
+  } catch (e) {
+    console.log(e.message);
+  }
+});
+
+router.get("/savings", async (req, res) => {
+  try {
+    const goals = await Goal.findAll({ include: [User] });
+    console.log("Goals", goals);
+    res.send(goals);
   } catch (e) {
     console.log(e.message);
   }

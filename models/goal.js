@@ -16,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     {
       goal_name: { type: DataTypes.STRING, allowNull: false },
       target_amount: { type: DataTypes.FLOAT, allowNull: false },
-      saved_amount: { type: DataTypes.FLOAT, allowNull: false },
+      saved_amount: { type: DataTypes.FLOAT },
       desire_date: { type: DataTypes.DATE, allowNull: false },
       color: { type: DataTypes.STRING },
       logoUrl: { type: DataTypes.TEXT },
-      //userId: { type: DataTypes.INTEGER, allowNull: false },
+      userId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
       sequelize,

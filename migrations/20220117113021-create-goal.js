@@ -18,7 +18,6 @@ module.exports = {
       },
       saved_amount: {
         type: Sequelize.FLOAT,
-        allowNull: false,
       },
       desire_date: {
         type: Sequelize.DATE,

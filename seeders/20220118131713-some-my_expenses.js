@@ -45,6 +45,38 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          amount: 40,
+          date: "2022-01-10",
+          userId: 1,
+          categoryId: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          amount: 16,
+          date: "2022-01-10",
+          userId: 1,
+          categoryId: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          amount: 67,
+          date: "2022-01-10",
+          userId: 1,
+          categoryId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          amount: 43,
+          date: "2022-01-10",
+          userId: 1,
+          categoryId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
