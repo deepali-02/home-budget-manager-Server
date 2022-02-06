@@ -23,7 +23,7 @@ module.exports = {
         },
         {
           amount: 40,
-          date: "2021-12-20",
+          date: "2022-02-01",
           userId: 1,
           categoryId: 2,
           createdAt: new Date(),
@@ -31,7 +31,7 @@ module.exports = {
         },
         {
           amount: 28,
-          date: "2022-02-15",
+          date: "2022-02-02",
           userId: 1,
           categoryId: 3,
           createdAt: new Date(),
@@ -39,7 +39,7 @@ module.exports = {
         },
         {
           amount: 18,
-          date: "2022-02-15",
+          date: "2022-02-01",
           userId: 1,
           categoryId: 2,
           createdAt: new Date(),
