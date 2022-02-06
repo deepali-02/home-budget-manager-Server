@@ -59,14 +59,6 @@ router.post("/my_expenses/:id", async (req, res) => {
   if (!amount || !date || !categoryId) {
     return res.status(400).send("Please provide an amount, date and category");
   }
-  const currentDate = new Date();
-  const currentMonth = currentDate.getMonth() + 1;
-  const currentYear = currentDate.getFullYear();
-  const firstOfTheMonth = `01/${currentMonth}/${currentYear}`;
-  const endOfTheMonth = `31/${currentMonth}/${currentYear}`;
-  console.log(
-    `date:${currentDate},month: ${currentMonth}, year: ${currentYear}`
-  );
 
   try {
     const newExpense = await MyExpenses.create({
@@ -134,11 +126,33 @@ router.delete("/my_expenses/delete/:id", async (req, res) => {
   }
 });
 
-router.get("/savings", async (req, res) => {
+router.get("/:id/savings", async (req, res) => {
   try {
-    const goals = await Goal.findAll({ include: [User] });
+    const id = parseInt(req.params.id);
+    const goals = await Goal.findAll({ where: { userId: id } });
     console.log("Goals", goals);
     res.send(goals);
+  } catch (e) {
+    console.log(e.message);
+  }
+});
+
+router.post("/savings/:id", async (req, res) => {
+  const { goal_name, target_amount, desire_date } = req.body;
+  if (!goal_name || !target_amount || !desire_date) {
+    return res
+      .status(400)
+      .send("Please provide name, target amount and desire date");
+  }
+  try {
+    const newGoal = await Goal.create({
+      goal_name,
+      target_amount,
+      desire_date,
+      userId: req.params.id,
+    });
+    console.log("new Goal", newGoal);
+    res.send(newGoal);
   } catch (e) {
     console.log(e.message);
   }
