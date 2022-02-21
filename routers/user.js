@@ -21,21 +21,21 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/my_expenses/:id", async (req, res) => {
-  const currentDate = new Date();
-  const currentMonth = currentDate.getMonth() + 1;
-  const currentYear = currentDate.getFullYear();
-  const firstOfTheMonth = `${currentYear}/${currentMonth}/01`;
-  const endOfTheMonth = `${currentYear}/${currentMonth}/31`;
+  // const currentDate = new Date();
+  // const currentMonth = currentDate.getMonth() + 1;
+  // const currentYear = currentDate.getFullYear();
+  // const firstOfTheMonth = `${currentYear}/${currentMonth}/01`;
+  // const endOfTheMonth = `${currentYear}/${currentMonth}/31`;
   // // console.log(
   //   `date:${currentDate},month: ${currentMonth}, year: ${currentYear}`
   // );
-  const currentMonthExpenses = await MyExpenses.findAll({
-    where: { date: { [Op.between]: [firstOfTheMonth, endOfTheMonth] } },
-  });
+  // const currentMonthExpenses = await MyExpenses.findAll({
+  //   where: { date: { [Op.between]: [firstOfTheMonth, endOfTheMonth] } },
+  // });
   //console.log("All expenses of current month", currentMonthExpenses);
-  const currentMonthExpenses1 = await MyExpenses.findAll({
-    where: { date: { [Op.between]: [firstOfTheMonth, endOfTheMonth] } },
-  });
+  // const currentMonthExpenses1 = await MyExpenses.findAll({
+  //   where: { date: { [Op.between]: [firstOfTheMonth, endOfTheMonth] } },
+  // });
   // console.log("All expenses of current month", currentMonthExpenses1);
   try {
     const id = parseInt(req.params.id);
@@ -158,6 +158,15 @@ router.post("/new_savings/:id", async (req, res) => {
   }
 });
 
-// router.get("/savings/:id")
+router.get("/savings/:id", async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const detailSaving = await Goal.findAll({ where: { id: id } });
+    console.log("Saving details: ", detailSaving);
+    res.send(detailSaving);
+  } catch (e) {
+    console.log(e.message);
+  }
+});
 
 module.exports = router;
