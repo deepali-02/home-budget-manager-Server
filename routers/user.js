@@ -137,7 +137,7 @@ router.get("/:id/savings", async (req, res) => {
   }
 });
 
-router.post("/savings/:id", async (req, res) => {
+router.post("/new_savings/:id", async (req, res) => {
   const { goal_name, target_amount, desire_date } = req.body;
   if (!goal_name || !target_amount || !desire_date) {
     return res
@@ -157,5 +157,7 @@ router.post("/savings/:id", async (req, res) => {
     console.log(e.message);
   }
 });
+
+// router.get("/savings/:id")
 
 module.exports = router;
