@@ -21,11 +21,11 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/my_expenses/:id", async (req, res) => {
-  // const currentDate = new Date();
-  // const currentMonth = currentDate.getMonth() + 1;
-  // const currentYear = currentDate.getFullYear();
-  // const firstOfTheMonth = `${currentYear}/${currentMonth}/01`;
-  // const endOfTheMonth = `${currentYear}/${currentMonth}/31`;
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1;
+  const currentYear = currentDate.getFullYear();
+  const firstOfTheMonth = `${currentYear}/${currentMonth}/01`;
+  const endOfTheMonth = `${currentYear}/${currentMonth}/31`;
   // // console.log(
   //   `date:${currentDate},month: ${currentMonth}, year: ${currentYear}`
   // );
