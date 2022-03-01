@@ -169,4 +169,15 @@ router.get("/savings/:id", async (req, res) => {
   }
 });
 
+router.patch("/addSaving/:id", async (req, res) => {
+  try {
+    const goal = await Goal.findByPk(req.params.id);
+    const saved_amount = req.body;
+    await goal.update(saved_amount);
+    return res.send(goal);
+  } catch (error) {
+    res.send("Something went wrong");
+  }
+});
+
 module.exports = router;
