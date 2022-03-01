@@ -161,7 +161,7 @@ router.post("/new_savings/:id", async (req, res) => {
 router.get("/savings/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-    const detailSaving = await Goal.findAll({ where: { id: id } });
+    const detailSaving = await Goal.findByPk(id);
     console.log("Saving details: ", detailSaving);
     res.send(detailSaving);
   } catch (e) {
