@@ -26,17 +26,7 @@ router.get("/my_expenses/:id", async (req, res) => {
   const currentYear = currentDate.getFullYear();
   const firstOfTheMonth = `${currentYear}/${currentMonth}/01`;
   const endOfTheMonth = `${currentYear}/${currentMonth}/31`;
-  // // console.log(
-  //   `date:${currentDate},month: ${currentMonth}, year: ${currentYear}`
-  // );
-  // const currentMonthExpenses = await MyExpenses.findAll({
-  //   where: { date: { [Op.between]: [firstOfTheMonth, endOfTheMonth] } },
-  // });
-  //console.log("All expenses of current month", currentMonthExpenses);
-  // const currentMonthExpenses1 = await MyExpenses.findAll({
-  //   where: { date: { [Op.between]: [firstOfTheMonth, endOfTheMonth] } },
-  // });
-  // console.log("All expenses of current month", currentMonthExpenses1);
+
   try {
     const id = parseInt(req.params.id);
     const expenses = await MyExpenses.findAll({
@@ -179,5 +169,16 @@ router.patch("/addSaving/:id", async (req, res) => {
     res.send("Something went wrong");
   }
 });
+
+router.patch("/savings/:id", async(req,res)=>{
+  try{
+    const updateDate =await Goal.findByPk(req.params.id)
+    const desire_date = req.body
+    await updateDate.update(desire_date)
+    return res.send(updateDate)
+  }catch (error) {
+    res.send("Something went wrong");
+  }
+})
 
 module.exports = router;
