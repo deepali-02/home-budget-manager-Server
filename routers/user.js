@@ -10,6 +10,7 @@ const { DATEONLY } = require("sequelize");
 
 const router = new Router();
 
+//Get user details
 router.get("/", async (req, res) => {
   try {
     const user = await User.findAll({ include: [MyExpenses] });
@@ -20,6 +21,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//Get expense for current month
 router.get("/my_expenses/:id", async (req, res) => {
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
@@ -44,6 +46,7 @@ router.get("/my_expenses/:id", async (req, res) => {
   }
 });
 
+//Create new expense
 router.post("/my_expenses/:id", async (req, res) => {
   const { amount, date, categoryId } = req.body;
   if (!amount || !date || !categoryId) {
@@ -67,6 +70,7 @@ router.post("/my_expenses/:id", async (req, res) => {
   }
 });
 
+//Get all categories
 router.get("/category", async (req, res) => {
   try {
     const category = await Category.findAll();
@@ -77,7 +81,7 @@ router.get("/category", async (req, res) => {
   }
 });
 
-//search expense by month
+//Get(search) expense by month
 router.get("/my_expenses/month/:month", async (req, res) => {
   const month = req.params.month;
   const currentYear = new Date().getFullYear();
@@ -86,21 +90,19 @@ router.get("/my_expenses/month/:month", async (req, res) => {
   console.log("month=", month);
   console.log("date to search=", startDateToSearch);
   try {
-    // const year = req.params.year;
     const monthlyExpenses = await MyExpenses.findAll({
       include: [Category],
       where: { date: { [Op.between]: [startDateToSearch, endDateToSearch] } },
     });
     console.log("Monthly Expenses", monthlyExpenses);
-    // const monthlyExpense = await MyExpenses.findByPk(monthlyExpenses.id, {
-    //   include: [Category],
-    // });
+
     res.send(monthlyExpenses);
   } catch (e) {
     console.log(e.message);
   }
 });
 
+//Delete expense
 router.delete("/my_expenses/delete/:id", async (req, res) => {
   try {
     const expenseId = req.params.id;
@@ -116,6 +118,7 @@ router.delete("/my_expenses/delete/:id", async (req, res) => {
   }
 });
 
+//Get all savings
 router.get("/:id/savings", async (req, res) => {
   try {
     const id = parseInt(req.params.id);
@@ -127,6 +130,7 @@ router.get("/:id/savings", async (req, res) => {
   }
 });
 
+//Create new saving goal
 router.post("/new_savings/:id", async (req, res) => {
   const { goal_name, target_amount, desire_date } = req.body;
   if (!goal_name || !target_amount || !desire_date) {
@@ -148,6 +152,7 @@ router.post("/new_savings/:id", async (req, res) => {
   }
 });
 
+//Get saving details
 router.get("/savings/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id);
@@ -159,6 +164,7 @@ router.get("/savings/:id", async (req, res) => {
   }
 });
 
+//Update saving amount
 router.patch("/addSaving/:id", async (req, res) => {
   try {
     const goal = await Goal.findByPk(req.params.id);
@@ -170,6 +176,7 @@ router.patch("/addSaving/:id", async (req, res) => {
   }
 });
 
+//Update desire date for saving goal
 router.patch("/savings/:id", async (req, res) => {
   try {
     const updateDate = await Goal.findByPk(req.params.id);
