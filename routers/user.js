@@ -170,15 +170,31 @@ router.patch("/addSaving/:id", async (req, res) => {
   }
 });
 
-router.patch("/savings/:id", async(req,res)=>{
-  try{
-    const updateDate =await Goal.findByPk(req.params.id)
-    const desire_date = req.body
-    await updateDate.update(desire_date)
-    return res.send(updateDate)
-  }catch (error) {
+router.patch("/savings/:id", async (req, res) => {
+  try {
+    const updateDate = await Goal.findByPk(req.params.id);
+    const desire_date = req.body;
+    await updateDate.update(desire_date);
+    return res.send(updateDate);
+  } catch (error) {
     res.send("Something went wrong");
   }
-})
+});
+
+//Delete saving goal
+router.delete("/saving/delete/:id", async (req, res) => {
+  try {
+    const savingID = req.params.id;
+    const saving = await Goal.findByPk(savingID);
+    console.log("Got saving", saving);
+    if (!saving) {
+      return res.status(404).send("This Saving not found");
+    }
+    await saving.destroy();
+    res.send({ message: "Ok", savingID });
+  } catch (error) {
+    res.send("Something went wrong");
+  }
+});
 
 module.exports = router;
