@@ -157,6 +157,9 @@ router.get("/savings/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const detailSaving = await Goal.findByPk(id);
+    if (!detailSaving) {
+      return res.status(404).send("Saving not found");
+    }
     console.log("Saving details: ", detailSaving);
     res.send(detailSaving);
   } catch (e) {
@@ -167,8 +170,11 @@ router.get("/savings/:id", async (req, res) => {
 //Update saving amount
 router.patch("/addSaving/:id", async (req, res) => {
   try {
-    const goal = await Goal.findByPk(req.params.id);
     const saved_amount = req.body;
+    const goal = await Goal.findByPk(req.params.id);
+    if (!goal) {
+      return res.status(404).send("Saving not found to add saved amount");
+    }
     await goal.update(saved_amount);
     return res.send(goal);
   } catch (error) {
@@ -179,8 +185,11 @@ router.patch("/addSaving/:id", async (req, res) => {
 //Update desire date for saving goal
 router.patch("/savings/:id", async (req, res) => {
   try {
-    const updateDate = await Goal.findByPk(req.params.id);
     const desire_date = req.body;
+    const updateDate = await Goal.findByPk(req.params.id);
+    if (!updateDate) {
+      return res.status(404).send("saving not found to update the date");
+    }
     await updateDate.update(desire_date);
     return res.send(updateDate);
   } catch (error) {
